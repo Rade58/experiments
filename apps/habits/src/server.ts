@@ -1,8 +1,9 @@
 import express from 'express'
 
-// I had pnpm error every time I build
-// if I don't set explicit type here
-const app: express.Application /* : express.Express */ = express()
+// we would need to type this if we
+// would use declaration: true in tsconfig.json
+// but we this is not a library
+const app /* : express.Application */ /* : express.Express */ = express()
 
 // Health check endpoint
 app.get('/health', (req, res) => {

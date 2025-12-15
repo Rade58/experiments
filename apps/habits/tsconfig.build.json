@@ -13,15 +13,20 @@
     "noEmit": false,
     "outDir": "./dist",
     "rootDir": "./src",
-    // Type definitions (for libraries)
-    "declaration": true,
-    "declarationMap": true,
-    // Project references (if needed)
-    // "composite": true,  // Uncomment if using project references
     // Source maps (optional but recommended)
     "sourceMap": true,
     // Incremental builds
     "incremental": true,
     "tsBuildInfoFile": "./dist/.tsbuildinfo"
+    // ------------------------------------------------
+    // Type definitions (for libraries)
+    // we are not building library here
+    // it is standalone server app, but lets keep these
+    // commented out for future reference
+    // "declaration": true,
+    // "declarationMap": true,
+    // ------------------------------------------------
+    // Project references (if needed)
+    // "composite": true,  // Uncomment if using project references
   }
 }

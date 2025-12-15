@@ -4,11 +4,16 @@
   "private": true,
   "type": "module",
   "main": "src/index.ts",
+  "repository": "https://github.com/Rade58/experiments/tree/main/apps/habits",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "dev": "tsx --watch --watch-preserve-output src/index.ts",
     "test": "vitest run",
-    "dev:no-op": "node --watch src/index.ts"
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "dev:no-op": "node --watch src/index.ts",
+    "start:no-op": "node dist/index.js",
+    "start:prod:no-op": "APP_STAGE=production node dist/index.js"
   },
   "keywords": [],
   "dependencies": {

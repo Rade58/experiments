@@ -9,7 +9,7 @@ const isDevelopment = process.env.APP_STAGE === 'dev'
 const isTesting = process.env.APP_STAGE === 'test'
 const isProduction = process.env.APP_STAGE === 'production'
 
-// console.log(isDevelopment, isTesting, isProduction);
+// console.log(isDevelopment, isTesting, isProduction)
 
 if (isDevelopment) {
 	// instead of this

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "noEmit": true,
     "noImplicitAny": true,
     "allowJs": true,
     "strict": true,

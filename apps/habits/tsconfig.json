@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "src"
+  ],
+  "compilerOptions": {
+    // no deed these (we inherit them)
+    // "noEmit": true,
+    // "target": "ESNext",
+    // "module": "NodeNext",
+    //
+    "noFallthroughCasesInSwitch": true,
+    // 
+    "rewriteRelativeImportExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    // this only works with moduleResolution: "bundler""
+    // so not using it now, but keeping for future reference
+    // "allowImportingTsExtensions": true,
+    "types": [
+      "vitest/globals"
+    ]
+  }
+}

@@ -7,6 +7,12 @@ import morgan from 'morgan'
 import { env, /* isDev, */ isTestEnv } from './env.ts'
 import { health } from './health.ts'
 
+//
+import authRouter from './routes/authRoutes.ts'
+import userRouter from './routes/userRoutes.ts'
+import habitRouter from './routes/habitRoutes.ts'
+//
+
 // we would need to type this if we
 // would use declaration: true in tsconfig.json
 // but we this is not a library
@@ -32,11 +38,21 @@ app.use(
 		skip: () => isTestEnv(),
 	}),
 )
-// -----------------------------------------------
 
+// -----------------------------------------------
 // Health check endpoint
 app.get('/health', health)
+// ------------------------------------------------
 
-export { app }
+app.use('/api/auth', authRouter)
+app.use('/api/users', userRouter)
+app.use('/api/habits', habitRouter)
 
-export default app
+// ------------------------------------------------
+/* if (env.FEATURE_ANALYTICS) {
+  app.use('/api/analytics', analyticsRoutes)
+}*/
+
+export { app } // for tests
+
+export default app // for convenience

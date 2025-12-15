@@ -3,12 +3,25 @@
   "include": [
     "src"
   ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "tests"
+  ], // ✅ Exclude tests
   "compilerOptions": {
+    // Emit files
     "noEmit": false,
     "outDir": "./dist",
     "rootDir": "./src",
+    // Type definitions (for libraries)
     "declaration": true,
     "declarationMap": true,
-    "composite": true,
+    // Project references (if needed)
+    // "composite": true,  // Uncomment if using project references
+    // Source maps (optional but recommended)
+    "sourceMap": true,
+    // Incremental builds
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo"
   }
 }

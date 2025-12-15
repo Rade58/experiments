@@ -21,10 +21,10 @@ if (isDevelopment) {
 	// eslint-disable-next-line
 	loadEnv('test') // this is loading .env.test
 } else if (isProduction) {
-	console.log('production -> no loading of env files')
+	// console.log('production -> no loading of env files')
 	// no loading .env files in production
 } else {
-	console.log('probably staging')
+	// console.log('probably staging')
 }
 
 const envSchema = z.object({
@@ -88,7 +88,7 @@ try {
 			const path = err.path.join('. ')
 			console.log({ path })
 			console.log(`${path} -> ${err.message}`)
-			console.log('---------------------')
+			console.log('-----------<>----------')
 		})
 
 		process.exit(1)

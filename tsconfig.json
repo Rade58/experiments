@@ -1,21 +1,26 @@
 {
   "compilerOptions": {
-    "noEmit": true,
+    // Emit control
+    "noEmit": true, // ✅ Root doesn't emit files
+    // Module system
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    // Strictness
     "noImplicitAny": true,
-    "allowJs": true,
     "strict": true,
+    // Compatibility
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "noUncheckedSideEffectImports": true,
+    // New feature (TS 5.7+)
+    "noUncheckedSideEffectImports": true // ✅ No trailing comma!
   },
   "include": [
     "eslint.config.mts"
   ],
   "exclude": [
-    // "**/assets/**/*",
     "node_modules",
     "dist"
+    // "**/assets/**/*",
   ]
 }

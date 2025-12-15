@@ -1,3 +1,9 @@
-const a = 4
+import env from './env.ts'
+import app from './server.ts'
 
-console.log('Test', a)
+app.listen(env.PORT, () => {
+	console.log(`________________________`)
+	console.log(`Server running on port ${env.PORT}`)
+	console.log(`Environment: ${env.APP_STAGE}`)
+	console.log(`________________________`)
+})

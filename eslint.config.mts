@@ -31,7 +31,7 @@ export default defineConfig(
 		},
 	},
 	{
-		ignores: ['**/assets/**/*', '**/dist/**/*'],
+		ignores: ['**/assets/**/*', '**/dist/**/*', 'apps/habits/tests'],
 	},
 	{
 		files: ['**/tailwind.config.js'],

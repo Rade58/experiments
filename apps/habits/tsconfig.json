@@ -2,27 +2,22 @@
   "extends": "../../tsconfig.json",
   "include": [
     "src",
-    "env.ts",
     "vitest.config.ts",
     "tests"
   ],
   "compilerOptions": {
-    // no need these (we inherit them)
-    // "noEmit": true,
-    // "target": "ESNext",
-    // "module": "NodeNext",
-    //
+    // Additional strictness
     "noFallthroughCasesInSwitch": true,
-    // 
+    // Modern TypeScript features
     "rewriteRelativeImportExtensions": true,
     "erasableSyntaxOnly": true,
     "verbatimModuleSyntax": true,
-    // this only works with moduleResolution: "bundler""
-    // so not using it now, but keeping for future reference
-    // "allowImportingTsExtensions": true,
+    // ⚠️ REMOVE THIS - conflicts with NodeNext + emit
+    // "allowImportingTsExtensions": true,  // ❌ Remove!
+    // Type definitions
     "types": [
       "vitest/globals",
-      "node",
+      "node"
     ]
   }
 }

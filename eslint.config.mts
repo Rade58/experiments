@@ -14,7 +14,12 @@ export default defineConfig(
 		},
 	},
 	{
-		files: ['packages/**/src/**/*.ts', 'packages/**/tests/**/*.ts'],
+		files: [
+			'packages/**/src/**/*.ts',
+			'packages/**/tests/**/*.ts',
+			'apps/**/src/**/*.ts',
+			'apps/**/tests/**/*.ts',
+		],
 		//
 		rules: {
 			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],

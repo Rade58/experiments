@@ -1,10 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "include": [
-    "src"
+    "src",
+    "env.ts",
+    "vitest.config.ts",
+    "tests"
   ],
   "compilerOptions": {
-    // no deed these (we inherit them)
+    // no need these (we inherit them)
     // "noEmit": true,
     // "target": "ESNext",
     // "module": "NodeNext",
@@ -18,7 +21,8 @@
     // so not using it now, but keeping for future reference
     // "allowImportingTsExtensions": true,
     "types": [
-      "vitest/globals"
+      "vitest/globals",
+      "node",
     ]
   }
 }

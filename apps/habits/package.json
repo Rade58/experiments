@@ -5,7 +5,8 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "echo 'dev script running'"
+    "dev": "node --watch src/index.ts",
+    "test": "vitest run"
   },
   "keywords": [],
   "dependencies": {

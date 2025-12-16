@@ -5,6 +5,6 @@ app.listen(env.PORT, () => {
 	console.log(`________________________`)
 	console.log(`Server running on port ${env.PORT}`)
 	console.log(`Environment: ${env.APP_STAGE}`)
-	console.log(`${env.CORS_ORIGIN[0]}/health`)
+	console.log(`Health: ${env.CORS_ORIGIN[0]}/health`)
 	console.log(`________________________`)
 })

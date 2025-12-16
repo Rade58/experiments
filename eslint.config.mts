@@ -28,6 +28,7 @@ export default defineConfig(
 				{ allowNumber: true, allowBoolean: true },
 			],
 			'@typescript-eslint/no-non-null-assertion': 'warn',
+			'@typescript-eslint/no-unnecessary-type-parameters': 'warn',
 		},
 	},
 	{

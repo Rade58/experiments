@@ -1,4 +1,4 @@
-import { Router, type Request, type Response } from 'express'
+import { Router /* type Request, type Response */ } from 'express'
 import { z } from 'zod'
 
 import {
@@ -27,7 +27,10 @@ router.get('/', (req, res) => {
 // so you must type it by yourseld
 // so I guess I will restrain from putting middleware
 // in array
-router.post('/', [validateBody(createHabitSchema)], (req: Request, res: Response) => {
+// not sure if array is worth it in this case,
+// just showing how to do it
+// router.post('/', [validateBody(createHabitSchema)], (req: Request, res: Response) => {
+router.post('/', validateBody(createHabitSchema), (req, res) => {
 	res.status(201).json({ message: 'Habit created' })
 })
 

@@ -65,6 +65,7 @@ export const entries = pgTable('entries', {
 		.references(() => habits.id, { onDelete: 'cascade' })
 		.notNull(),
 	completionDate: timestamp('completion_date').defaultNow().notNull(),
+	note: varchar({ length: 255 }),
 })
 
 /**
@@ -73,7 +74,7 @@ export const entries = pgTable('entries', {
 export const tags = pgTable('tags', {
 	id: uuid('id').primaryKey().defaultRandom(),
 	name: varchar('name', { length: 50 }).unique().notNull(),
-	color: varchar('color', { length: 7 }).default('#7f728a'),
+	color: varchar('color', { length: 10 }).default('#7f728a'),
 	createdAt: timestamp('created_at').defaultNow().notNull(),
 	updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })

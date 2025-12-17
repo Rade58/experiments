@@ -29,6 +29,9 @@ export default defineConfig(
 			],
 			'@typescript-eslint/no-non-null-assertion': 'warn',
 			'@typescript-eslint/no-unnecessary-type-parameters': 'warn',
+			'@typescript-eslint/no-unsafe-call': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-unsafe-return': 'off',
 		},
 	},
 	{

@@ -6,7 +6,7 @@
   "description": "Monorepo of my personal projects and experiments",
   "scripts": {
     "dev": "pnpm run -r --parallel dev",
-    "de": "./scripts/dev-concurrently.sh",
+    "dev:c": "./scripts/dev-concurrently.sh",
     "build": "pnpm --color run -r build",
     "lint": "pnpm --color run -r lint",
     "test": "pnpm --color run -r test",
@@ -14,7 +14,7 @@
     "format": "./scripts/format.sh"
   },
   "license": "ISC",
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.26.0",
   "volta": {
     "node": "24.12.0"
   },

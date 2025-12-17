@@ -2,8 +2,9 @@
   "extends": "../../tsconfig.json",
   "include": [
     "src",
+    "tests",
     "vitest.config.ts",
-    "tests"
+    "drizzle.config.ts"
   ],
   "compilerOptions": {
     // Additional strictness

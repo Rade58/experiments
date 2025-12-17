@@ -31,8 +31,8 @@ app.use(
 // this opens everything (every domain is allowed to hit our api)
 // app.use(cors()); // bad for security (only use if this is public facing api)
 //
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json()) // because we don't want t odeal with buffers on every request
+app.use(express.urlencoded({ extended: true })) // we don't want problems with querystrings
 app.use(
 	morgan('dev', {
 		skip: () => isTestEnv(),
@@ -42,6 +42,9 @@ app.use(
 // -----------------------------------------------
 // Health check endpoint
 app.get('/health', health)
+/* app.get('/button', (req, res) => {
+	res.status(200).send(`<button>button</button>`)
+}) */
 // ------------------------------------------------
 
 app.use('/api/auth', authRouter)
@@ -49,9 +52,12 @@ app.use('/api/users', userRouter)
 app.use('/api/habits', habitRouter)
 
 // ------------------------------------------------
-/* if (env.FEATURE_ANALYTICS) {
+// if we would have analytics feature
+/* 
+if (env.FEATURE_ANALYTICS) {
   app.use('/api/analytics', analyticsRoutes)
-}*/
+}
+*/
 
 export { app } // for tests
 

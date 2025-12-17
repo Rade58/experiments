@@ -125,6 +125,9 @@ export const habitTags = pgTable(
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 
+// where ever you have - one -  relation you must define
+// what field is a foreign key and what it references
+
 // User can have many Habits (no foreign key on habits table)
 export const usersRelations = relations(users, ({ many }) => ({
 	habits: many(habits),

@@ -80,7 +80,7 @@ try {
 	env = envSchema.parse(process.env)
 } catch (e) {
 	if (e instanceof z.ZodError) {
-		console.log(' ---- Invalid env var! ----')
+		console.log(' -- Invalid Environment Variable! --')
 		// console.error(JSON.stringify(e.flatten().fieldErrors, null, 2)); // deprecated
 		console.error(z.flattenError(e).fieldErrors)
 
@@ -88,7 +88,7 @@ try {
 			const path = err.path.join('. ')
 			console.log({ path })
 			console.log(`${path} -> ${err.message}`)
-			console.log('-----------<>----------')
+			console.log('-- ---------<>-------- --')
 		})
 
 		process.exit(1)

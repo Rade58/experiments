@@ -13,6 +13,11 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint .",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "node src/db/seed.ts",
     "dev:no-op": "node --watch src/index.ts",
     "start:no-op": "node dist/index.js",
     "start:prod:no-op": "APP_STAGE=production node dist/index.js"
@@ -20,6 +25,7 @@
   "keywords": [],
   "dependencies": {
     "@epic-web/remember": "^1.1.0",
+    "@neondatabase/serverless": "^1.0.2",
     "cors": "^2.8.5",
     "custom-env": "^2.0.6",
     "dotenv": "^17.2.3",
@@ -40,6 +46,7 @@
     "@types/jest": "^30.0.0",
     "@types/morgan": "^1.9.10",
     "@types/node": "^25.0.2",
+    "@types/pg": "^8.16.0",
     "@types/supertest": "^6.0.3",
     "@vitest/coverage-v8": "^4.0.15",
     "bcrypt": "latest",

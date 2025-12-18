@@ -141,7 +141,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 			process.exit(1)
 		})
 }
+
 // so, why export it then?
 // well, for potential testing purposes
-
+// or you can decide to run it programmatically somewhere else
 export default seed

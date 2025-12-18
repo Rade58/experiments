@@ -87,31 +87,32 @@ async function seed() {
 		console.log('\n🔦 Testing some queries with joins...')
 
 		// it's an array
-		const myDbData = await db
+		const entriesList = await db
 			.select()
-			.from(users)
-			.innerJoin(habits, eq(habits.userId, users.id))
-			.innerJoin(entries, eq(entries.habitId, habits.id))
+			.from(entries)
+			.innerJoin(habits, eq(habits.id, entries.habitId))
+			.innerJoin(users, eq(habits.userId, users.id))
 			.innerJoin(habitTags, eq(habitTags.habitId, habits.id))
 			.innerJoin(tags, eq(tags.id, habitTags.tagId))
 			.where(eq(users.email, fooUser.email))
 
-		console.log(JSON.stringify({ myDbData }, null, 2))
+		// console.log(JSON.stringify({ entriesList }, null, 2))
 
 		const [habitWithCount] = await db
 			.select({ count: count(habits.id) })
 			.from(habits)
 			.innerJoin(users, eq(users.id, habits.userId))
-			.where(eq(users.email, myDbData[0].users.email))
+			.where(eq(users.email, entriesList[0].users.email))
 
 		console.log('Datbase seeded successfully! 🎉')
 		console.log('\n📖 seed summary:')
 		console.log(`Demo user has ${habitWithCount.count} habit(s).`)
+		console.log(`Demo user has ${entriesList.length} total entries logged.`)
 		console.log(
 			'\n🦸🏻 Fake User credentials: ',
-			`\nemail: ${myDbData[0].users.email}`,
+			`\nemail: ${entriesList[0].users.email}`,
 			`\npassword: ${pass}`,
-			`\npassword hash: ${passwordHash}`,
+			// `\npassword hash: ${passwordHash}`,
 		)
 	} catch (err) {
 		console.error('‼️ Seed failed:', err)

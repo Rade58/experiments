@@ -13,15 +13,11 @@ import {
 
 import { relations } from 'drizzle-orm'
 
-// just showing you this (drizzle-zod) here because we can also
-// create zod schemas from our tables
-// which I will use in my personal projects
-//  import {
-//    createInsertSchema,
-//    createSelectSchema,
-//    createUpdateSchema,
-//  } from 'drizzle-zod'
-//
+// todo: (drizzle-zod)
+import {
+	createInsertSchema,
+	createSelectSchema /* , createUpdateSchema  */,
+} from 'drizzle-zod'
 
 /**
  * Users table - core authentication and profile
@@ -48,7 +44,11 @@ export const habits = pgTable('habits', {
 	name: varchar('name', { length: 100 }).notNull(),
 	description: text('description'),
 	// dayly, weekly, monthly (why enum isn't used here?)
-	frequency: varchar('frequency', { length: 20 }).notNull(),
+	// frequency: varchar('frequency', { length: 20 }).notNull(),
+	frequency: varchar('frequency', {
+		length: 20,
+		enum: ['daily', 'weekly', 'monthly', 'yearly'],
+	}).notNull(),
 	// how many time per frequency
 	targetCount: integer('target_count').default(1),
 	isActive: boolean('is_active').default(true).notNull(),
@@ -169,3 +169,35 @@ export const habitTagsRelations = relations(habitTags, ({ one }) => ({
 		references: [habits.id],
 	}),
 }))
+
+// -------------------- Types --------------------------
+// -----------------------------------------------------
+export type User = typeof users.$inferSelect
+export type NewUser = typeof users.$inferInsert
+export type Habit = typeof habits.$inferSelect
+export type NewHabit = typeof habits.$inferInsert
+export type Tag = typeof tags.$inferSelect
+export type NewTag = typeof tags.$inferInsert
+export type Entry = typeof entries.$inferSelect
+export type NewEntry = typeof entries.$inferInsert
+export type HabitTag = typeof habitTags.$inferSelect
+export type NewHabitTag = typeof habitTags.$inferInsert
+
+// ------------------- Zod Schemas --------------------
+// ----------------------------------------------------
+// for example you don't need to validate id (it is auto generated)
+export const insertUserSchema = createInsertSchema(users)
+export const selectUserSchema = createSelectSchema(users)
+// todo: updateUserSchema
+
+export const insertHabitSchema = createInsertSchema(habits)
+export const selectHabitSchema = createSelectSchema(habits)
+
+export const insertTagSchema = createInsertSchema(tags)
+export const selectTagSchema = createSelectSchema(tags)
+
+export const insertEntrySchema = createInsertSchema(entries)
+export const selectEntrySchema = createSelectSchema(entries)
+
+export const insertHabitTagSchema = createInsertSchema(habitTags)
+export const selectHabitTagSchema = createSelectSchema(habitTags)

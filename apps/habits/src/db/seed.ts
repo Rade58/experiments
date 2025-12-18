@@ -3,6 +3,10 @@ import { eq, count } from 'drizzle-orm'
 import { users, habits, entries, tags, habitTags } from './schema.ts'
 import { hashPassword } from '../utils/auth/password.ts'
 
+// In future projects if you want easy way
+// to populate db with fake data, you can use
+// https://fakerjs.dev/ (npm package faker-js/faker)
+
 async function seed() {
 	console.log('🪴 Starting database seed...')
 

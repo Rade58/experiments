@@ -33,6 +33,7 @@ export default defineConfig(
 			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
 			'no-useless-catch': 'off',
+			'@typescript-eslint/no-empty-object-type': 'warn',
 		},
 	},
 	{

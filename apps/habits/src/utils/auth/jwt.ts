@@ -8,7 +8,7 @@ interface Payload extends JWTPayload {
 	username: string
 }
 
-export const generateToken = (payload: Payload) => {
+export const generateToken = (payload: Payload): Promise<string> => {
 	const secret = env.JWT_SECRET
 	const secretKey = createSecretKey(secret, 'utf-8')
 

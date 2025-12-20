@@ -1,9 +1,10 @@
 import type { Request, Response } from 'express'
-// import bcrypt from 'bcrypt' // used in helper
+// import bcrypt from 'bcrypt'
 import { generateToken } from '../utils/auth/jwt.ts'
-import { hashPassword } from '../utils/auth/password.ts'
+import { hashPassword, comparePasswords } from '../utils/auth/password.ts'
 import { db } from '../db/connection.ts'
 import { users, type NewUser } from '../db/schema.ts'
+import { eq } from 'drizzle-orm'
 // import { env } from '../env.ts' // used in helper
 
 export const register = async (req: Request<{}, {}, NewUser>, res: Response) => {
@@ -76,6 +77,57 @@ export const register = async (req: Request<{}, {}, NewUser>, res: Response) => 
 			}
 		} */
 
+		res.status(500).json({ error: 'Failed to create user' })
+	}
+}
+
+export const login = async (
+	req: Request<{}, {}, { email: string; password: string }>,
+	res: Response,
+) => {
+	try {
+		const { email, password } = req.body
+		// Step 1: find user by email
+		const userList = await db.select().from(users).where(eq(users.email, email))
+
+		// if(!user)
+		if (userList.length === 0) {
+			return res.status(401).json({ error: 'Invalid credentials!' })
+		}
+
+		const [user] = userList
+
+		// Step 2: verify password
+		// const isValidPassword = await bcrypt.compare(password, user.password)
+		const isValidPassword = await comparePasswords(password, user.password)
+
+		// here we will implement something lik rate limiting
+		// to prevent hacker guess the password
+		if (!isValidPassword) {
+			return res.status(401).json({ message: 'Invalid credentials!' })
+		}
+
+		// Step 3: generate JWT token
+		const token = await generateToken({
+			id: user.id,
+			email: user.email,
+			username: user.username,
+		})
+
+		// Step 4: Return user data and token
+		res.json({
+			message: 'Login successful',
+			user: {
+				id: user.id,
+				email: user.email,
+				username: user.username,
+				firstName: user.firstName,
+				lastName: user.lastName,
+			},
+			token,
+		})
+	} catch (err) {
+		console.error('Registration error: ', err)
 		res.status(500).json({ error: 'Failed to create user' })
 	}
 }

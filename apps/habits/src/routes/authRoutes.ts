@@ -1,7 +1,8 @@
 import { Router } from 'express'
+import { z } from 'zod'
 
 //
-import { register } from '../controllers/authControler.ts'
+import { register, login } from '../controllers/authControler.ts'
 import { validateBody } from '../middleware/validation.ts'
 // if we need something special
 // for example validating that email is of
@@ -25,6 +26,11 @@ insertUserSchema.extend({
 // because in this case email with wrong format will end up in
 // database
 
+const loginSchema = z.object({
+	email: z.email('Invalid email').nonoptional('Eamil is required'),
+	password: z.string().min(1, 'Password is required'),
+})
+
 const router = Router()
 
 // router.post('/register', (req, res) => {
@@ -32,9 +38,10 @@ const router = Router()
 // })
 router.post('/register', validateBody(insertUserSchema), register)
 
-router.post('/login', (req, res) => {
-	res.json({ message: 'User logged in' })
-})
+// router.post('/login', (req, res) => {
+// 	res.json({ message: 'User logged in' })
+// })
+router.post('/login', validateBody(loginSchema), login)
 
 router.post('/logout', (req, res) => {
 	res.json({ message: 'User logged out' })

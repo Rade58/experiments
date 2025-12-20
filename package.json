@@ -10,6 +10,7 @@
     "build": "pnpm --color run -r build",
     "lint": "pnpm --color run -r lint",
     "test": "pnpm --color run -r test",
+    "test:watch": "pnpm --color run -r test:watch",
     "check": "pnpm --color run -r check",
     "format": "./scripts/format.sh"
   },

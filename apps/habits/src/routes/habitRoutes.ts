@@ -6,6 +6,7 @@ import {
 	validateParams,
 	// validateQueryParams,
 } from '../middleware/validation.ts'
+import { authenticateToken } from '../middleware/auth.ts'
 
 // --------------------------------------------
 export const createHabitSchema = z.object({
@@ -18,6 +19,10 @@ export const completeHabitSchema = z.object({
 // --------------------------------------------
 
 const router = Router()
+
+// Applying authentication to all routes bellow
+router.use(authenticateToken)
+//
 
 router.get('/', (req, res) => {
 	res.json({ message: 'Get all habits' })

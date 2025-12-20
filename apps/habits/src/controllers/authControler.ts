@@ -71,6 +71,10 @@ export const register = async (req: Request<{}, {}, NewUser>, res: Response) => 
 		/* if (err && typeof err === 'object' && 'code' in err) {
 			// PostgreSQL unique violation error code
 			if (err.code === '23505') {
+			// BAD PRACTICE: WE SHOULDN'T
+			// SEND TO USER WHICH FIELD CAUSED THE ERROR
+			// BECAUSE IT CAN BE USED BY HACKERS
+			// ONLY MESSAGE WE SHOULD SEND IS "INVALID CREDENTIALS"
 				return res.status(409).json({
 					error: 'User with this email or username already exists',
 				})

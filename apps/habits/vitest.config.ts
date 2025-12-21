@@ -15,7 +15,7 @@ export default defineConfig({
 		},
 		globals: true,
 		// todo: add setup file if needed
-		globalSetup: ['./tests/setup/globalSetup.ts'],
+		// globalSetup: ['./tests/setup/globalSetup.ts'],
 		// cleanup to ensure isolation
 		clearMocks: true,
 		restoreMocks: true,

@@ -15,10 +15,9 @@ if (isDevelopment) {
 	// instead of this
 	// loadEnv(); // this is loading .env
 	// I wanted to use this
-	// eslint-disable-next-line
+
 	loadEnv('dev') // this is loading .env.dev
 } else if (isTesting) {
-	// eslint-disable-next-line
 	loadEnv('test') // this is loading .env.test
 } else if (isProduction) {
 	// console.log('production -> no loading of env files')

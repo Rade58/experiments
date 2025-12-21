@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { z } from 'zod'
 
 //
-import { register, login } from '../controllers/authControler.ts'
+import { register, login } from '../controllers/authController.ts'
 import { validateBody } from '../middleware/validation.ts'
 // if we need something special
 // for example validating that email is of

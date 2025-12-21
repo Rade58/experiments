@@ -13,6 +13,8 @@ import userRouter from './routes/userRoutes.ts'
 import habitRouter from './routes/habitRoutes.ts'
 //
 
+import { errorHandler, notFound, AppError } from './middleware/errorHandler.ts'
+
 // we would need to type this if we
 // would use declaration: true in tsconfig.json
 // but we this is not a library
@@ -47,6 +49,13 @@ app.get('/health', health)
 }) */
 // ------------------------------------------------
 
+//
+app.use((_, __, next) => {
+	next(new AppError('ValidationError', 'Something pooped on validity', 409))
+})
+
+//
+
 app.use('/api/auth', authRouter)
 app.use('/api/users', userRouter)
 app.use('/api/habits', habitRouter)
@@ -58,6 +67,13 @@ if (env.FEATURE_ANALYTICS) {
   app.use('/api/analytics', analyticsRoutes)
 }
 */
+
+// 404 handler - Must come after all valid routes
+
+app.use(notFound)
+
+// Global error handler, must be last
+app.use(errorHandler)
 
 export { app } // for tests
 

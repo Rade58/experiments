@@ -2,3 +2,8 @@ packages:
   - 'packages/*'
   - 'apps/*'
   - 'hybrids/*'
+
+onlyBuiltDependencies:
+  - 'sharp'
+  - 'esbuild'
+  - 'unrs-resolver'

@@ -13,6 +13,10 @@
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"incremental": true,
+		//
+		// Disable the strict side-effect import check
+		"noUncheckedSideEffectImports": false,
+		//
 		"plugins": [
 			{
 				"name": "next"

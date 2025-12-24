@@ -1,5 +1,6 @@
 import React from 'react'
-import './styles.css'
+// import './styles.css' not going to use them becuse
+// going to use tailwind
 
 export const metadata = {
 	description: 'A blank template using Payload in a Next.js app.',

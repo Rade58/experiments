@@ -1,36 +1,38 @@
 {
-  "name": "lab",
-  "version": "0.0.1",
-  "private": true,
-  "repository": "https://github.com/Rade58/experiments",
-  "description": "Monorepo of my personal projects and experiments",
-  "scripts": {
-    "dev": "pnpm run -r --parallel dev",
-    "dev:c": "./scripts/dev-concurrently.sh",
-    "build": "pnpm --color run -r build",
-    "lint": "pnpm --color run -r lint",
-    "test": "pnpm --color run -r test",
-    "test:watch": "pnpm --color run -r test:watch",
-    "check": "pnpm --color run -r check",
-    "format": "./scripts/format.sh"
-  },
-  "license": "ISC",
-  "packageManager": "pnpm@10.26.0",
-  "volta": {
-    "node": "24.12.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@manypkg/cli": "^0.25.1",
-    "@types/node": "^25.0.2",
-    "@vitest/ui": "^4.0.15",
-    "concurrently": "^9.2.1",
-    "eslint": "^9.39.2",
-    "knip": "^5.73.4",
-    "prettier": "^3.7.4",
-    "prettier-plugin-svelte": "^3.4.1",
-    "syncpack": "^13.0.4",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.49.0"
-  }
+	"name": "lab",
+	"version": "0.0.1",
+	"private": true,
+	"repository": "https://github.com/Rade58/experiments",
+	"description": "Monorepo of my personal projects and experiments",
+	"scripts": {
+		"dev": "pnpm run -r --parallel dev",
+		"dev:c": "./scripts/dev-concurrently.sh",
+		"build": "pnpm --color run -r build",
+		"lint": "pnpm --color run -r lint",
+		"test": "pnpm --color run -r test",
+		"test:watch": "pnpm --color run -r test:watch",
+		"check": "pnpm --color run -r check",
+		"format": "./scripts/format.sh"
+	},
+	"license": "ISC",
+	"packageManager": "pnpm@10.26.0",
+	"volta": {
+		"node": "24.12.0"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3.3.3",
+		"@eslint/js": "^9.39.2",
+		"@manypkg/cli": "^0.25.1",
+		"@types/node": "^25.0.2",
+		"@vitest/ui": "^4.0.15",
+		"concurrently": "^9.2.1",
+		"eslint": "^9.39.2",
+		"knip": "^5.73.4",
+		"prettier": "^3.7.4",
+		"prettier-plugin-svelte": "^3.4.1",
+		"syncpack": "^13.0.4",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.49.0",
+		"eslint-config-next": "15.4.7"
+	}
 }

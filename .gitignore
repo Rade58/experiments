@@ -1,46 +1,50 @@
 # Logs
 logs
 *.log
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-
-# Dependencies
-node_modules
-.pnp
-.pnp.js
-
-# Local env files
-.env
-.env.dev
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-!.env.example
-.env.test
-
-# Build Outputs
-.next/
-out/
-build
-dist
-dist-ssr
-tmp
-
-# Debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/*
+!.idea/runConfigurations
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+.yarn/install-state.gz
+.pnpm-store
+.npm/_logs
+.npm/_cacache
+
+# Env
+.env
+.env.dev
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.test
+!.env.example
+
+# Build outputs
+**/.next
+out/
+build/
+dist/
+dist-ssr
+tmp
+.vercel
+.vercel/output/
+
 # Testing
 coverage
-
-# Playwright
 test-results/
 playwright-report/
 blob-report/
@@ -49,14 +53,13 @@ playwright/.cache/
 # Misc
 .DS_Store
 *.pem
-.idea
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
 *.local
 
-# --------------------------------------------
+# TS build info
+*.tsbuildinfo
 **/tsconfig.build.tsbuildinfo

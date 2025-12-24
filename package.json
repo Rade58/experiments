@@ -20,6 +20,7 @@
 		"node": "24.12.0"
 	},
 	"devDependencies": {
+		"@next/eslint-plugin-next": "^15.4.7",
 		"@eslint/eslintrc": "^3.3.3",
 		"@eslint/js": "^9.39.2",
 		"@manypkg/cli": "^0.25.1",
@@ -27,12 +28,13 @@
 		"@vitest/ui": "^4.0.15",
 		"concurrently": "^9.2.1",
 		"eslint": "^9.39.2",
+		"eslint-config-next": "15.4.7",
+		"eslint-plugin-react-hooks": "^7.0.1",
 		"knip": "^5.73.4",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.1",
 		"syncpack": "^13.0.4",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.49.0",
-		"eslint-config-next": "15.4.7"
+		"typescript-eslint": "^8.49.0"
 	}
 }

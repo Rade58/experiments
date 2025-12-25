@@ -15,7 +15,7 @@ const compat = new FlatCompat({
 export default defineConfig(
 	// Base configs
 	js.configs.recommended,
-	tseslint.configs.strictTypeChecked,
+	...tseslint.configs.strictTypeChecked,
 	{
 		languageOptions: {
 			parserOptions: {
@@ -24,7 +24,7 @@ export default defineConfig(
 			},
 		},
 	},
-	// General monorepo rules
+	// General monorepo rules (excluding Next.js app)
 	{
 		files: [
 			'packages/**/src/**/*.ts',
@@ -32,8 +32,12 @@ export default defineConfig(
 			'apps/**/src/**/*.ts',
 			'apps/**/tests/**/*.ts',
 		],
+		ignores: ['hybrids/cms/**'],
 		rules: {
-			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{ argsIgnorePattern: '^_' },
+			],
 			'@typescript-eslint/restrict-template-expressions': [
 				'error',
 				{ allowNumber: true, allowBoolean: true },
@@ -47,8 +51,14 @@ export default defineConfig(
 			'@typescript-eslint/no-empty-object-type': 'warn',
 		},
 	},
-	// Next.js specific config (using FlatCompat)
-	...compat.extends('next/core-web-vitals', 'next/typescript'),
+	// Next.js specific configs - scoped to hybrids/cms only
+	...compat
+		.extends('next/core-web-vitals', 'next/typescript')
+		.map((config) => ({
+			...config,
+			files: ['hybrids/cms/**/*.{js,jsx,ts,tsx}'],
+		})),
+	// Next.js custom rules and overrides
 	{
 		files: ['hybrids/cms/**/*.{js,jsx,ts,tsx}', '**/next.config.mjs'],
 		rules: {
@@ -67,15 +77,18 @@ export default defineConfig(
 					caughtErrorsIgnorePattern: '^(_|ignore)',
 				},
 			],
+			// '@typescript-eslint/no-unsafe-argument': 'warn',
+			// '@typescript-eslint/no-unsafe-member-access': 'warn',
+			// '@typescript-eslint/no-unsafe-call': 'warn',
+			// '@typescript-eslint/no-misused-spread': 'warn',
 		},
 	},
-	{
-		ignores: ['**/assets/**/*', '**/dist/**/*', '**/.next/**/*', 'apps/habits/tests'],
-	},
+	// Tailwind config files
 	{
 		files: ['**/tailwind.config.js'],
 		rules: {},
 	},
+	// PostCSS config files
 	{
 		files: ['**/postcss.config.cjs'],
 		languageOptions: {
@@ -87,5 +100,14 @@ export default defineConfig(
 				console: 'readonly',
 			},
 		},
+	},
+	// Global ignores
+	{
+		ignores: [
+			'**/assets/**/*',
+			'**/dist/**/*',
+			'**/.next/**/*',
+			'apps/habits/tests',
+		],
 	},
 )

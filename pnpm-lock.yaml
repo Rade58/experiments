@@ -162,6 +162,9 @@ importers:
       '@payloadcms/ui':
         specifier: 3.69.0
         version: 3.69.0(@types/react@19.2.1)(monaco-editor@0.55.1)(next@15.4.10(@babel/core@7.28.5)(@playwright/test@1.56.1)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(sass@1.77.4))(payload@3.69.0(graphql@16.12.0)(typescript@5.9.3))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
+      '@t3-oss/env-nextjs':
+        specifier: ^0.13.10
+        version: 0.13.10(typescript@5.9.3)(zod@4.1.13)
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -171,6 +174,9 @@ importers:
       graphql:
         specifier: ^16.8.1
         version: 16.12.0
+      jiti:
+        specifier: ^2.6.1
+        version: 2.6.1
       next:
         specifier: 15.4.10
         version: 15.4.10(@babel/core@7.28.5)(@playwright/test@1.56.1)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(sass@1.77.4)
@@ -186,6 +192,9 @@ importers:
       sharp:
         specifier: 0.34.2
         version: 0.34.2
+      zod:
+        specifier: ^4.1.13
+        version: 4.1.13
     devDependencies:
       '@playwright/test':
         specifier: 1.56.1
@@ -222,7 +231,7 @@ importers:
         version: 5.1.4(typescript@5.9.3)(vite@7.2.7(@types/node@25.0.2)(jiti@2.6.1)(sass@1.77.4)(tsx@4.21.0))
       vitest:
         specifier: 3.2.3
-        version: 3.2.3(@types/debug@4.1.12)(@types/node@25.0.2)(@vitest/ui@4.0.15(vitest@4.0.15))(jiti@2.6.1)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.21.0)
+        version: 3.2.3(@types/debug@4.1.12)(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.21.0)
 
 packages:
 
@@ -1791,6 +1800,40 @@ packages:
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
+
+  '@t3-oss/env-core@0.13.10':
+    resolution: {integrity: sha512-NNFfdlJ+HmPHkLi2HKy7nwuat9SIYOxei9K10lO2YlcSObDILY7mHZNSHsieIM3A0/5OOzw/P/b+yLvPdaG52g==}
+    peerDependencies:
+      arktype: ^2.1.0
+      typescript: '>=5.0.0'
+      valibot: ^1.0.0-beta.7 || ^1.0.0
+      zod: ^3.24.0 || ^4.0.0
+    peerDependenciesMeta:
+      arktype:
+        optional: true
+      typescript:
+        optional: true
+      valibot:
+        optional: true
+      zod:
+        optional: true
+
+  '@t3-oss/env-nextjs@0.13.10':
+    resolution: {integrity: sha512-JfSA2WXOnvcc/uMdp31paMsfbYhhdvLLRxlwvrnlPE9bwM/n0Z+Qb9xRv48nPpvfMhOrkrTYw1I5Yc06WIKBJQ==}
+    peerDependencies:
+      arktype: ^2.1.0
+      typescript: '>=5.0.0'
+      valibot: ^1.0.0-beta.7 || ^1.0.0
+      zod: ^3.24.0 || ^4.0.0
+    peerDependenciesMeta:
+      arktype:
+        optional: true
+      typescript:
+        optional: true
+      valibot:
+        optional: true
+      zod:
+        optional: true
 
   '@testing-library/dom@10.4.1':
     resolution: {integrity: sha512-o4PXJQidqJl82ckFaXUeoAW+XysPLauYI43Abki5hABd853iMhitooc6znOnczgbTYmEP6U6/y1ZyKAIsvMKGg==}
@@ -7040,6 +7083,18 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@t3-oss/env-core@0.13.10(typescript@5.9.3)(zod@4.1.13)':
+    optionalDependencies:
+      typescript: 5.9.3
+      zod: 4.1.13
+
+  '@t3-oss/env-nextjs@0.13.10(typescript@5.9.3)(zod@4.1.13)':
+    dependencies:
+      '@t3-oss/env-core': 0.13.10(typescript@5.9.3)(zod@4.1.13)
+    optionalDependencies:
+      typescript: 5.9.3
+      zod: 4.1.13
+
   '@testing-library/dom@10.4.1':
     dependencies:
       '@babel/code-frame': 7.27.1
@@ -11123,7 +11178,7 @@ snapshots:
       sass: 1.77.4
       tsx: 4.21.0
 
-  vitest@3.2.3(@types/debug@4.1.12)(@types/node@25.0.2)(@vitest/ui@4.0.15(vitest@4.0.15))(jiti@2.6.1)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.21.0):
+  vitest@3.2.3(@types/debug@4.1.12)(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.21.0):
     dependencies:
       '@types/chai': 5.2.3
       '@vitest/expect': 3.2.3

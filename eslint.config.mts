@@ -50,7 +50,7 @@ export default defineConfig(
 	// Next.js specific config (using FlatCompat)
 	...compat.extends('next/core-web-vitals', 'next/typescript'),
 	{
-		files: ['hybrids/cms/**/*.{js,jsx,ts,tsx}'],
+		files: ['hybrids/cms/**/*.{js,jsx,ts,tsx}', '**/next.config.mjs'],
 		rules: {
 			'@typescript-eslint/ban-ts-comment': 'warn',
 			'@typescript-eslint/no-empty-object-type': 'warn',

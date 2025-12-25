@@ -7,7 +7,9 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-// import { envSchema } from './my-zod-schemas/envSchema'
+//
+import { env } from './env/server'
+//
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,8 +23,10 @@ export default buildConfig({
 		// I added this so we don't have to log in
 		// (also we created admin user with seed script)
 		autoLogin: {
-			email: process.env.DUMMY_EMAIL,
-			password: process.env.DUMMY_PASSWORD,
+			// email: process.env.DUMMY_EMAIL,
+			// password: process.env.DUMMY_PASSWORD,
+			email: env.DUMMY_EMAIL,
+			password: env.DUMMY_PASSWORD,
 		},
 	},
 	collections: [Users, Media],

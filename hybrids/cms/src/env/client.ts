@@ -5,7 +5,7 @@ export const env = createEnv({
 	client: {
 		NEXT_PUBLIC_LOREM: z.string().nonoptional(),
 	},
-	experimental__runtimeEnv: {
+	runtimeEnv: {
 		NEXT_PUBLIC_LOREM: process.env.NEXT_PUBLIC_LOREM,
 	},
 })

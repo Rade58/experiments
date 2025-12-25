@@ -9,5 +9,10 @@ export const env = createEnv({
 		DUMMY_EMAIL: z.email().nonoptional(),
 		DUMMY_PASSWORD: z.string().min(4).max(20).nonoptional(),
 	},
-	experimental__runtimeEnv: process.env,
+	runtimeEnv: {
+		DATABASE_URL: process.env.DATABASE_URL,
+		PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
+		DUMMY_EMAIL: process.env.DUMMY_EMAIL,
+		DUMMY_PASSWORD: process.env.DUMMY_PASSWORD,
+	},
 })

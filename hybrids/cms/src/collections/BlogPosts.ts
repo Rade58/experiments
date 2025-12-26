@@ -61,8 +61,20 @@ export const BlogPosts: CollectionConfig = {
 					},
 				],
 				// computing it
-				afterChange: [generateReadingTime],
+				afterRead: [generateReadingTime],
 			},
+		},
+		{
+			name: 'coverImage',
+			type: 'upload',
+			// relations are also auto generated
+			relationTo: 'media',
+			required: true,
+		},
+		{
+			name: 'author',
+			type: 'relationship',
+			relationTo: 'authors',
 		},
 	],
 }

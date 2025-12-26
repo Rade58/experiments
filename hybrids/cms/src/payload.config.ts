@@ -14,6 +14,7 @@ import { Media } from './collections/Media'
 import { env } from './env/server'
 //
 import { BlogPosts } from './collections/BlogPosts'
+import { Authors } from './collections/Authors'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,7 +35,7 @@ export default buildConfig({
 		},
 	},
 	//
-	collections: [Users, Media, BlogPosts],
+	collections: [Users, Media, BlogPosts, Authors],
 	// Rade: adding some new features
 	// (fixed toolbar)
 	editor: lexicalEditor({

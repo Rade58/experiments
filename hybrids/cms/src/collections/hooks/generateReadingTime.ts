@@ -19,7 +19,7 @@ export const generateReadingTime: FieldHook<
 			1,
 			Math.ceil(words.length / WORDS_PER_MINUTE),
 		)
-		// console.log({ readingTime })
+		console.log({ readingTime })
 		return readingTime
 	}
 

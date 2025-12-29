@@ -151,6 +151,7 @@ export interface User {
 export interface Media {
   id: number;
   alt: string;
+  blurDataURI?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -189,6 +190,9 @@ export interface BlogPost {
   contentSummary: string;
   readingTime?: number | null;
   coverImage: number | Media;
+  author: number | Author;
+  status: 'draft' | 'published';
+  publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -199,6 +203,8 @@ export interface BlogPost {
 export interface Author {
   id: number;
   name: string;
+  avatar: number | Media;
+  role: 'guestWriter' | 'staffWriter' | 'contributor' | 'editor';
   updatedAt: string;
   createdAt: string;
 }
@@ -312,6 +318,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  blurDataURI?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -335,6 +342,9 @@ export interface BlogPostsSelect<T extends boolean = true> {
   contentSummary?: T;
   readingTime?: T;
   coverImage?: T;
+  author?: T;
+  status?: T;
+  publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -344,6 +354,8 @@ export interface BlogPostsSelect<T extends boolean = true> {
  */
 export interface AuthorsSelect<T extends boolean = true> {
   name?: T;
+  avatar?: T;
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
 }

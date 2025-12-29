@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { generateSlugHook } from './hooks/generateSlugHook'
 import { generateContentSummaryHook } from './hooks/generateContentSummaryHook'
 import { generateReadingTime } from './hooks/generateReadingTime'
+import { showDateWhenPublished } from './hooks/showDateWhenPublished'
 
 // title
 // slug - auto generated
@@ -45,7 +46,9 @@ export const BlogPosts: CollectionConfig = {
 			},
 		},
 		// this is called Virtual Field or computed field
-		// doesn't get stored in db
+		// doesn't get stored in db (well not true)
+		// we will compute always what it returns but
+		// in datbase column will be defined and have default of 0
 		{
 			name: 'readingTime', // minutes
 			type: 'number',
@@ -75,6 +78,28 @@ export const BlogPosts: CollectionConfig = {
 			name: 'author',
 			type: 'relationship',
 			relationTo: 'authors',
+			required: true,
+		},
+		{
+			name: 'status',
+			type: 'select',
+			required: true,
+			options: [
+				{ label: 'Draft', value: 'draft' },
+				{ label: 'Published', value: 'published' },
+			],
+			defaultValue: 'draft',
+		},
+		{
+			name: 'publishedAt',
+			type: 'date',
+			required: true,
+			admin: {
+				condition: showDateWhenPublished,
+				date: {
+					pickerAppearance: 'dayAndTime',
+				},
+			},
 		},
 	],
 }

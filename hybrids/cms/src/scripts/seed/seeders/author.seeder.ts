@@ -5,15 +5,15 @@ import z, { ZodError } from 'zod'
 import { faker } from '@faker-js/faker'
 
 // import { env } from '@/env/server'
-import { getImageFromFaker } from '../util/getImageFromFaker'
+import { getAvatarImageFromFaker } from '../util/getImageFromFaker'
 
-export async function seedArticleAuthor(payloadClient: Payload) {
+export async function seedAuthor(payloadClient: Payload) {
 	try {
 		// todo:
 		// 1 - insert medai file for avatar
 		// 2 - insert author
 
-		const result = await getImageFromFaker()
+		const result = await getAvatarImageFromFaker()
 
 		if ('error' in result && result.error) {
 			throw new Error('Faker error')
@@ -44,6 +44,7 @@ export async function seedArticleAuthor(payloadClient: Payload) {
 				role: 'staffWriter',
 			},
 		})
+		return author
 	} catch (err) {
 		if (err instanceof ZodError) {
 			console.error(z.flattenError(err))

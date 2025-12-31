@@ -1,14 +1,16 @@
-import { getPayload /*  ValidationError, type ValidationErrorName  */ } from 'payload'
+import {
+	// getPayload /*  ValidationError, type ValidationErrorName  */,
+	// type BasePayload
+	type Payload,
+} from 'payload'
 
-import config from '@/payload.config'
-import { isDuplicateUserError } from '../lib/is-duplicate-error'
+// import config from '@/payload.config'
+import { isDuplicateUserError } from '../util/isDuplicateUserError'
 
 import z, { ZodError } from 'zod'
 import { env } from '@/env/server'
 
-export async function seedAdmin() {
-	const payloadClient = await getPayload({ config })
-
+export async function seedAdmin(payloadClient: Payload) {
 	try {
 		/* const emailAndPassword = envSchema.parse({
 			email: process.env.DUMMY_EMAIL,
@@ -33,7 +35,10 @@ export async function seedAdmin() {
 		} else if (err instanceof ZodError) {
 			console.error(z.flattenError(err))
 		} else {
-			console.error('Error! seeding admin user: ', JSON.stringify(err, null, 2))
+			console.error(
+				'Error! seeding admin user: ',
+				JSON.stringify(err, null, 2),
+			)
 		}
 	}
 }

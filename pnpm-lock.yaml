@@ -150,6 +150,9 @@ importers:
 
   hybrids/cms:
     dependencies:
+      '@faker-js/faker':
+        specifier: ^10.1.0
+        version: 10.1.0
       '@payloadcms/db-postgres':
         specifier: 3.69.0
         version: 3.69.0(@neondatabase/serverless@1.0.2)(payload@3.69.0(graphql@16.12.0)(typescript@5.9.3))
@@ -231,7 +234,7 @@ importers:
         version: 5.1.4(typescript@5.9.3)(vite@7.2.7(@types/node@25.0.2)(jiti@2.6.1)(sass@1.77.4)(tsx@4.21.0))
       vitest:
         specifier: 3.2.3
-        version: 3.2.3(@types/debug@4.1.12)(@types/node@25.0.2)(@vitest/ui@4.0.15(vitest@4.0.15))(jiti@2.6.1)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.21.0)
+        version: 3.2.3(@types/debug@4.1.12)(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.21.0)
 
 packages:
 
@@ -965,6 +968,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  '@faker-js/faker@10.1.0':
+    resolution: {integrity: sha512-C3mrr3b5dRVlKPJdfrAXS8+dq+rq8Qm5SNRazca0JKgw1HQERFmrVb0towvMmw5uu8hHKNiQasMaR/tydf3Zsg==}
+    engines: {node: ^20.19.0 || ^22.13.0 || ^23.5.0 || >=24.0.0, npm: '>=10'}
 
   '@floating-ui/core@1.7.3':
     resolution: {integrity: sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w==}
@@ -6180,6 +6187,8 @@ snapshots:
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
 
+  '@faker-js/faker@10.1.0': {}
+
   '@floating-ui/core@1.7.3':
     dependencies:
       '@floating-ui/utils': 0.2.10
@@ -11178,7 +11187,7 @@ snapshots:
       sass: 1.77.4
       tsx: 4.21.0
 
-  vitest@3.2.3(@types/debug@4.1.12)(@types/node@25.0.2)(@vitest/ui@4.0.15(vitest@4.0.15))(jiti@2.6.1)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.21.0):
+  vitest@3.2.3(@types/debug@4.1.12)(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.21.0):
     dependencies:
       '@types/chai': 5.2.3
       '@vitest/expect': 3.2.3

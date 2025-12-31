@@ -5,7 +5,8 @@ import type {
 import { type Media } from '@/payload-types'
 // import path from 'node:path'
 
-import sharp from 'sharp'
+// import sharp from 'sharp'
+import { generateBlurDataURI } from '../util/generateBlurDataURI'
 
 export const generateBlurImageData: CollectionBeforeChangeHook<
 	Media
@@ -14,7 +15,7 @@ export const generateBlurImageData: CollectionBeforeChangeHook<
 		return data
 	}
 
-	console.log({ operation })
+	// console.log({ operation })
 
 	//
 	const { /* blurDataURI, */ filename, mimeType } = data
@@ -37,17 +38,11 @@ export const generateBlurImageData: CollectionBeforeChangeHook<
 	}
 
 	try {
-		const buff = await sharp(imageBuff.data)
-			.resize(10, 10, { fit: 'inside' })
-			.blur()
-			.jpeg({ quality: 50 })
-			.toBuffer()
+		const base64 = await generateBlurDataURI(imageBuff.data)
 
-		const bufferString = buff.toString('base64')
-
-		// console.log({ bufferString })
-
-		const base64 = `data:image/jpeg;base64,${bufferString}`
+		if (!base64) {
+			return data
+		}
 
 		data.blurDataURI = base64
 

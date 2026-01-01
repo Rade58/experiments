@@ -7,19 +7,21 @@ import { getCoverImageFromFaker } from '../util/getImageFromFaker'
 import { Author } from '@/payload-types'
 import {
 	convertMarkdownToLexical,
-	convertHTMLToLexical,
+	// convertHTMLToLexical,
 	editorConfigFactory,
 } from '@payloadcms/richtext-lexical'
 
 import config from '@/payload.config'
 import { slugify } from 'payload/shared'
 
+const POSTS_COUNT = 5
+
 export async function seedBlogPosts(
 	payloadClient: Payload,
 	author: Author,
 ) {
 	try {
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < POSTS_COUNT; i++) {
 			const paragraphs = faker.lorem.paragraphs(3)
 			const contentLexical = convertMarkdownToLexical({
 				markdown: paragraphs,
@@ -40,6 +42,11 @@ export async function seedBlogPosts(
 			const slug =
 				slugify(title) || title.replace(' ', '-').toLowerCase()
 
+			const status = faker.helpers.arrayElement([
+				'draft',
+				'published',
+			])
+
 			await payloadClient.create({
 				collection: 'blogPosts',
 				data: {
@@ -48,8 +55,11 @@ export async function seedBlogPosts(
 					content: contentLexical,
 					contentSummary: faker.lorem.sentences(3),
 					slug,
-					status: 'draft',
+					status,
 					coverImage: coverImage.id,
+					...(status === 'published' && {
+						publishedAt: faker.date.recent().toISOString(),
+					}),
 				},
 			})
 		}
